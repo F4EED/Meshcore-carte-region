@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaulix - CartoMesh</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <h1>Gaulix - CartoMesh</h1>
+        <p>Cartographie des reseaux Mesh (Meshtastic et Meshcore)</p>
+      </header>
+      <main>
+        <div id="map"></div>
+        <aside id="tools-panel" class="tools-panel">
+          <div id="tools-panel-header" class="tools-panel-header">
+            <span>Outils</span>
+            <button id="tools-toggle-button" class="tools-toggle-button" type="button" aria-expanded="true">
+              Reduire
+            </button>
+          </div>
+          <div class="tools-panel-content">
+            <p>Zone de legendes et d'actions.</p>
+            <div class="tools-switches">
+              <label class="switch-row">
+                <span>Meshtastic</span>
+                <span class="switch">
+                  <input id="toggle-meshtastic" type="checkbox" />
+                  <span class="switch-slider" aria-hidden="true"></span>
+                </span>
+              </label>
+              <label class="switch-row">
+                <span class="meshcore-label">
+                  <span id="meshcore-submenu-arrow" class="meshcore-arrow" aria-hidden="true">▸</span>
+                  <span>Meshcore</span>
+                </span>
+                <span class="switch">
+                  <input id="toggle-meshcore" type="checkbox" />
+                  <span class="switch-slider" aria-hidden="true"></span>
+                </span>
+              </label>
+              <div id="meshcore-load-status" class="meshcore-load-status">
+                <div class="meshcore-load-title">GeoJSON charges</div>
+                <ul id="meshcore-load-list" class="meshcore-load-list"></ul>
+              </div>
+              <div id="meshcore-legend" class="meshcore-legend">
+                <div class="meshcore-load-title">Legende des limites</div>
+                <ul id="meshcore-legend-list" class="meshcore-legend-list"></ul>
+              </div>
+              <!--
+              Sous-menus Meshcore temporairement desactives:
+              Region Europe, Region France, Departement Francais.
+              <div class="sub-switch-group">
+                <label class="switch-row sub-switch-row">
+                  <span>Region Europe</span>
+                  <span class="switch">
+                    <input id="toggle-meshcore-region-europe" type="checkbox" />
+                    <span class="switch-slider" aria-hidden="true"></span>
+                  </span>
+                </label>
+                <label class="switch-row sub-switch-row">
+                  <span>Region France</span>
+                  <span class="switch">
+                    <input id="toggle-meshcore-region-france" type="checkbox" />
+                    <span class="switch-slider" aria-hidden="true"></span>
+                  </span>
+                </label>
+                <label class="switch-row sub-switch-row">
+                  <span>Departement Francais</span>
+                  <span class="switch">
+                    <input id="toggle-meshcore-departement-francais" type="checkbox" />
+                    <span class="switch-slider" aria-hidden="true"></span>
+                  </span>
+                </label>
+              </div>
+              -->
+              <label class="switch-row">
+                <span>SAR</span>
+                <span class="switch">
+                  <input id="toggle-sar" type="checkbox" />
+                  <span class="switch-slider" aria-hidden="true"></span>
+                </span>
+              </label>
+              <label class="switch-row">
+                <span>...</span>
+                <span class="switch">
+                  <input id="toggle-more" type="checkbox" />
+                  <span class="switch-slider" aria-hidden="true"></span>
+                </span>
+              </label>
+            </div>
+            <img
+              class="tools-panel-image"
+              src="images/gaulix-meshtastic-2.png"
+              alt="Gaulix Meshtastic"
+            />
+          </div>
+        </aside>
+        <aside id="coords-panel" class="coords-panel">
+          <div id="coords-panel-header" class="coords-panel-header">Position geographique au niveau du curseur</div>
+          <div class="coords-panel-content">
+            <div>Lat: <span id="mouse-lat">-</span></div>
+            <div>Lng: <span id="mouse-lng">-</span></div>
+          </div>
+        </aside>
+        <aside id="identify-panel" class="identify-panel">
+          <div id="identify-panel-header" class="identify-panel-header">Infos au clic (Meshcore)</div>
+          <div id="identify-panel-content" class="identify-panel-content">
+            Active `Meshcore`, puis clique sur la carte.
+          </div>
+        </aside>
+      </main>
+    </div>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
