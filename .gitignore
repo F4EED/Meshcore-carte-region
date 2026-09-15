@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.vite-dev.pid
+.vite-dev.log
+.vite-dev.err.log
+
+# Doublon local: les GeoJSON livrés sont dans public/geojson/
+/geojson/
